@@ -1,6 +1,6 @@
 # A Kotlin Compose library for Gtk4 and Adw
 
-![Welcome](https://raw.githubusercontent.com/compose4gtk/compose-4-gtk/main/docs/screenshots/welcome.png)
+![Welcome](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/welcome.png)
 
 **Compose 4 GTK** is a Kotlin library that brings the Jetpack Compose-style declarative UI development model to native
 Linux
@@ -8,7 +8,7 @@ applications using GTK 4 and Libadwaita (Adw).
 With this library, developers can build modern, responsive desktop applications in Kotlin, combining the power of
 Compose with the native capabilities of GTK.
 
-Documentation is available on https://compose4gtk.github.io/compose-4-gtk.
+Documentation is available on https://gardencompose.github.io/gardencompose.
 
 ### Benefits for Users
 
@@ -30,10 +30,10 @@ same declarative power to the Linux desktop.
 
 ## Getting started
 
-![Maven Central](https://img.shields.io/maven-central/v/io.github.compose4gtk/compose-4-gtk.svg)
+![Maven Central](https://img.shields.io/maven-central/v/io.github.gardencompose/gardencompose.svg)
 
 This library is still under development. Pre-release versions are
-available on [Maven Central](https://central.sonatype.com/artifact/io.github.compose4gtk/compose-4-gtk).
+available on [Maven Central](https://central.sonatype.com/artifact/io.github.gardencompose/gardencompose).
 
 JDK 22 or newer and the Kotlin Compose compiler plugin are required.
 
@@ -56,7 +56,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.compose4gtk:compose-4-gtk:<latest-version>")
+    implementation("io.github.gardencompose:gardencompose:<latest-version>")
 }
 
 application {
@@ -72,7 +72,7 @@ on [the official documentation](https://developer.android.com/develop/ui/compose
 
 ### Basic window
 
-![Demo](https://raw.githubusercontent.com/compose4gtk/compose-4-gtk/main/docs/screenshots/basic_window.png)
+![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/basic_window.png)
 
 Source [here](examples/src/main/kotlin/1_BasicWindow.kt).
 
@@ -104,7 +104,7 @@ creating, updating and destroying the native GTK/ADW widgets.
 
 ### Dynamic window
 
-![Demo](https://raw.githubusercontent.com/compose4gtk/compose-4-gtk/main/docs/screenshots/dynamic_window.gif)
+![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/dynamic_window.gif)
 
 Source [here](examples/src/main/kotlin/2_DynamicWindow.kt).
 
@@ -143,7 +143,7 @@ although some concepts only apply to Android.
 
 ### Entry with text transformation
 
-![Demo](https://raw.githubusercontent.com/compose4gtk/compose-4-gtk/main/docs/screenshots/uppercase_entry.png)
+![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/uppercase_entry.png)
 
 Source [here](examples/src/main/kotlin/3_Uppercase_Entry.kt).
 
@@ -180,7 +180,7 @@ details.
 
 ### Dynamic tags
 
-![Demo](https://raw.githubusercontent.com/compose4gtk/compose-4-gtk/main/docs/screenshots/tags.gif)
+![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/tags.gif)
 
 Source [here](examples/src/main/kotlin/4_DynamicTags.kt).
 
@@ -229,7 +229,7 @@ As a bonus, this example also illustrates how to show toasts using `ToastOverlay
 
 ### ListView
 
-![Demo](https://raw.githubusercontent.com/compose4gtk/compose-4-gtk/main/docs/screenshots/list_view.png)
+![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/list_view.png)
 
 Source [here](examples/src/main/kotlin/5_ListView.kt).
 
@@ -257,11 +257,11 @@ This example explains how to declare a `ListView` with 10 thousand items.
 Items are created, reused, updated and destroyed dynamically as the list scrolls.
 
 There are alternative options to create a `ListView`,
-see [the full documentation](https://compose4gtk.github.io/compose-4-gtk/-compose%204%20-g-t-k/io.github.compose4gtk.gtk.components/-list-view.html).
+see [the full documentation](https://gardencompose.github.io/gardencompose/-compose%204%20-g-t-k/io.github.gardencompose.gtk.components/-list-view.html).
 
 ### GIO Resources
 
-![Demo](https://raw.githubusercontent.com/compose4gtk/compose-4-gtk/main/docs/screenshots/gio_resources.png)
+![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/gio_resources.png)
 
 Source [here](examples/src/main/kotlin/6_GIOResources.kt).
 

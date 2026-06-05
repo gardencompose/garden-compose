@@ -1,13 +1,13 @@
 import androidx.compose.runtime.getValue
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.adw.components.NavigationPage
-import io.github.compose4gtk.adw.components.NavigationSplitView
-import io.github.compose4gtk.adw.components.StatusPage
-import io.github.compose4gtk.adw.components.ToolbarView
-import io.github.compose4gtk.adw.components.rememberNavigationSplitViewState
-import io.github.compose4gtk.gtk.components.Button
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.adw.components.NavigationPage
+import io.github.gardencompose.adw.components.NavigationSplitView
+import io.github.gardencompose.adw.components.StatusPage
+import io.github.gardencompose.adw.components.ToolbarView
+import io.github.gardencompose.adw.components.rememberNavigationSplitViewState
+import io.github.gardencompose.gtk.components.Button
 import org.gnome.adw.BreakpointCondition
 
 fun main(args: Array<String>) {

@@ -2,14 +2,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.*
-import io.github.compose4gtk.gtk.components.Label
-import io.github.compose4gtk.gtk.components.ToggleButton
-import io.github.compose4gtk.gtk.components.VerticalBox
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.cssClasses
-import io.github.compose4gtk.modifier.margin
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.*
+import io.github.gardencompose.gtk.components.Label
+import io.github.gardencompose.gtk.components.ToggleButton
+import io.github.gardencompose.gtk.components.VerticalBox
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.cssClasses
+import io.github.gardencompose.modifier.margin
 
 fun main(args: Array<String>) {
     adwApplication("my.example.hello-app", args) {

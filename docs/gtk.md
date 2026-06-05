@@ -1,3 +1,3 @@
-# Package io.github.compose4gtk
+# Package io.github.gardencompose
 
 The main package of Compose 4 GTK.

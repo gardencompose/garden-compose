@@ -1,10 +1,10 @@
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.gtk.components.Box
-import io.github.compose4gtk.gtk.components.Calendar
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.margin
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.gtk.components.Box
+import io.github.gardencompose.gtk.components.Calendar
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.margin
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Month

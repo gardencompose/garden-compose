@@ -2,17 +2,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.adw.components.StatusPage
-import io.github.compose4gtk.gtk.components.Label
-import io.github.compose4gtk.gtk.components.Switch
-import io.github.compose4gtk.gtk.components.VerticalBox
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.alignment
-import io.github.compose4gtk.modifier.cssClasses
-import io.github.compose4gtk.modifier.sensitive
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.adw.components.StatusPage
+import io.github.gardencompose.gtk.components.Label
+import io.github.gardencompose.gtk.components.Switch
+import io.github.gardencompose.gtk.components.VerticalBox
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.alignment
+import io.github.gardencompose.modifier.cssClasses
+import io.github.gardencompose.modifier.sensitive
 import org.gnome.gtk.Align
 
 fun main(args: Array<String>) {

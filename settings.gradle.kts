@@ -1,4 +1,4 @@
-rootProject.name = "compose-4-gtk"
+rootProject.name = "garden-compose"
 
 include(":lib:core")
 include(":lib:gtk")

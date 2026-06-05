@@ -2,15 +2,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.gtk.components.Label
-import io.github.compose4gtk.gtk.components.ScrolledWindow
-import io.github.compose4gtk.gtk.components.TextView
-import io.github.compose4gtk.gtk.components.VerticalBox
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.expand
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.gtk.components.Label
+import io.github.gardencompose.gtk.components.ScrolledWindow
+import io.github.gardencompose.gtk.components.TextView
+import io.github.gardencompose.gtk.components.VerticalBox
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.expand
 
 const val MAX_CHARS = 64
 

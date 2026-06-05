@@ -19,8 +19,8 @@ style:
     comments: [ ]
   WildcardImport:
     excludeImports:
-      - io.github.compose4gtk.adw.components.*
-      - io.github.compose4gtk.gtk.components.*
+      - io.github.gardencompose.adw.components.*
+      - io.github.gardencompose.gtk.components.*
   MagicNumber:
     excludes:
       - '**/test/**'
@@ -29,7 +29,7 @@ style:
 formatting:
   NoWildcardImports:
     packagesToUseImportOnDemandProperty:
-      "io.github.compose4gtk.adw.components.*,io.github.compose4gtk.gtk.components.*"
+      "io.github.gardencompose.adw.components.*,io.github.gardencompose.gtk.components.*"
   TrailingCommaOnCallSite:
     active: true
   TrailingCommaOnDeclarationSite:

@@ -1,0 +1,6 @@
+package io.github.gardencompose.modifier
+
+fun Modifier.sensitive(sensitive: Boolean = true) = combine(
+    apply = { it.sensitive = sensitive },
+    undo = { it.sensitive = true },
+)

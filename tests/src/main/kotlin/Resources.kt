@@ -3,16 +3,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.gtk.ImageSource
-import io.github.compose4gtk.gtk.components.*
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.cssClasses
-import io.github.compose4gtk.modifier.margin
-import io.github.compose4gtk.modifier.verticalAlignment
-import io.github.compose4gtk.useGioResource
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.gtk.ImageSource
+import io.github.gardencompose.gtk.components.*
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.cssClasses
+import io.github.gardencompose.modifier.margin
+import io.github.gardencompose.modifier.verticalAlignment
+import io.github.gardencompose.useGioResource
 import org.gnome.gtk.Align
 
 fun main(args: Array<String>) {

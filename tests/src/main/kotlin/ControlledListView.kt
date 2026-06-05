@@ -5,20 +5,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.gtk.components.Button
-import io.github.compose4gtk.gtk.components.ControlledListView
-import io.github.compose4gtk.gtk.components.HorizontalBox
-import io.github.compose4gtk.gtk.components.Label
-import io.github.compose4gtk.gtk.components.ScrolledWindow
-import io.github.compose4gtk.gtk.components.ToggleButton
-import io.github.compose4gtk.gtk.components.VerticalBox
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.cssClasses
-import io.github.compose4gtk.modifier.expand
-import io.github.compose4gtk.modifier.margin
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.gtk.components.Button
+import io.github.gardencompose.gtk.components.ControlledListView
+import io.github.gardencompose.gtk.components.HorizontalBox
+import io.github.gardencompose.gtk.components.Label
+import io.github.gardencompose.gtk.components.ScrolledWindow
+import io.github.gardencompose.gtk.components.ToggleButton
+import io.github.gardencompose.gtk.components.VerticalBox
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.cssClasses
+import io.github.gardencompose.modifier.expand
+import io.github.gardencompose.modifier.margin
 import org.gnome.gobject.GObject
 
 fun main(args: Array<String>) {

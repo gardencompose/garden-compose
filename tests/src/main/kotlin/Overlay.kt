@@ -1,12 +1,12 @@
 import androidx.compose.runtime.getValue
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.adw.components.OverlaySplitView
-import io.github.compose4gtk.gtk.components.*
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.expandVertically
-import io.github.compose4gtk.modifier.margin
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.adw.components.OverlaySplitView
+import io.github.gardencompose.gtk.components.*
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.expandVertically
+import io.github.gardencompose.modifier.margin
 import org.gnome.adw.BreakpointCondition
 import org.gnome.gtk.PolicyType
 

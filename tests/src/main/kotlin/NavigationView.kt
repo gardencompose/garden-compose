@@ -1,17 +1,17 @@
 import androidx.compose.runtime.Composable
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.adw.components.NavigationPage
-import io.github.compose4gtk.adw.components.NavigationView
-import io.github.compose4gtk.adw.components.NavigationViewState
-import io.github.compose4gtk.adw.components.rememberNavigationViewState
-import io.github.compose4gtk.gtk.components.Button
-import io.github.compose4gtk.gtk.components.Label
-import io.github.compose4gtk.gtk.components.VerticalBox
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.cssClasses
-import io.github.compose4gtk.modifier.margin
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.adw.components.NavigationPage
+import io.github.gardencompose.adw.components.NavigationView
+import io.github.gardencompose.adw.components.NavigationViewState
+import io.github.gardencompose.adw.components.rememberNavigationViewState
+import io.github.gardencompose.gtk.components.Button
+import io.github.gardencompose.gtk.components.Label
+import io.github.gardencompose.gtk.components.VerticalBox
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.cssClasses
+import io.github.gardencompose.modifier.margin
 
 fun main(args: Array<String>) {
     adwApplication("my.example.hello-app", args) {

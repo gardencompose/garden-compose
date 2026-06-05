@@ -1,20 +1,25 @@
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.gtk.ImageSource
-import io.github.compose4gtk.gtk.components.IconButton
-import io.github.compose4gtk.gtk.components.Picture
-import io.github.compose4gtk.gtk.components.VerticalBox
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.cssClasses
-import io.github.compose4gtk.modifier.expand
-import io.github.compose4gtk.useGioResource
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.gtk.ImageSource
+import io.github.gardencompose.gtk.components.IconButton
+import io.github.gardencompose.gtk.components.Picture
+import io.github.gardencompose.gtk.components.VerticalBox
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.cssClasses
+import io.github.gardencompose.modifier.expand
+import io.github.gardencompose.useGioResource
 import org.gnome.gtk.ContentFit
 
 fun main(args: Array<String>) {
     useGioResource("resources.gresource") {
         adwApplication("my.example.hello-app", args) {
-            ApplicationWindow("Lulù", onClose = ::exitApplication, defaultWidth = 400, defaultHeight = 400) {
+            ApplicationWindow(
+                "Lulù",
+                onClose = ::exitApplication,
+                defaultWidth = 400,
+                defaultHeight = 400,
+            ) {
                 VerticalBox {
                     HeaderBar(
                         startWidgets = {

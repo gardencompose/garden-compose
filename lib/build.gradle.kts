@@ -23,7 +23,7 @@ dependencies {
     dokka(project(":lib:adw"))
 }
 
-group = "io.github.compose4gtk"
+group = "io.github.gardencompose"
 version = "0.0-SNAPSHOT"
 gitVersioning.apply {
     refs {
@@ -60,7 +60,7 @@ val readMeToDocIndexTask = tasks.register<Copy>("readmeToDocIndex") {
             line
                 .replace(
                     "](examples/",
-                    "](https://github.com/compose4gtk/compose-4-gtk/blob/main/examples/",
+                    "](https://github.com/garden-compose/garden-compose/blob/main/examples/",
                 )
         }
     }
@@ -86,7 +86,7 @@ tasks.register<Jar>("dokkaHtmlJar") {
 }
 
 subprojects {
-    group = "io.github.compose4gtk"
+    group = "io.github.garden-compose"
 
     plugins.withId("maven-publish") {
         publishing {
@@ -98,7 +98,7 @@ subprojects {
 
                     pom {
                         inceptionYear = "2023"
-                        url = "https://github.com/compose4gtk/compose-4-gtk"
+                        url = "https://github.com/garden-compose/garden-compose"
                         licenses {
                             license {
                                 name = "GNU Lesser General Public License v3.0"
@@ -110,6 +110,10 @@ subprojects {
                                 name = "Marco Marangoni"
                                 email = "marco.marangoni1@gmail.com"
                             }
+                            developer {
+                                name = "Thomas Lavoie"
+                                email = "lavoiethomas17@gmail.com"
+                            }
                         }
                         contributors {
                             contributor {
@@ -118,9 +122,9 @@ subprojects {
                             }
                         }
                         scm {
-                            connection = "scm:git:git://github.com/compose4gtk/compose-4-gtk.git"
-                            developerConnection = "scm:git:ssh://github.com:compose4gtk/compose-4-gtk.git"
-                            url = "https://github.com/compose4gtk/compose-4-gtk"
+                            connection = "scm:git:git://github.com/garden-compose/garden-compose.git"
+                            developerConnection = "scm:git:ssh://github.com:garden-compose/garden-compose.git"
+                            url = "https://github.com/garden-compose/garden-compose"
                         }
                     }
                 }

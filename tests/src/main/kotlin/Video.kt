@@ -3,32 +3,32 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.ActionRow
-import io.github.compose4gtk.adw.components.ApplicationWindow
-import io.github.compose4gtk.adw.components.ExpanderRow
-import io.github.compose4gtk.adw.components.HeaderBar
-import io.github.compose4gtk.adw.components.StatusPage
-import io.github.compose4gtk.adw.components.ToolbarView
-import io.github.compose4gtk.gtk.components.Button
-import io.github.compose4gtk.gtk.components.HorizontalBox
-import io.github.compose4gtk.gtk.components.Label
-import io.github.compose4gtk.gtk.components.ListBox
-import io.github.compose4gtk.gtk.components.MediaControls
-import io.github.compose4gtk.gtk.components.ScrolledWindow
-import io.github.compose4gtk.gtk.components.ToggleButton
-import io.github.compose4gtk.gtk.components.VerticalBox
-import io.github.compose4gtk.gtk.components.Video
-import io.github.compose4gtk.gtk.components.VideoState
-import io.github.compose4gtk.gtk.components.rememberVideoState
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.cssClasses
-import io.github.compose4gtk.modifier.expand
-import io.github.compose4gtk.modifier.horizontalAlignment
-import io.github.compose4gtk.modifier.margin
-import io.github.compose4gtk.modifier.sizeRequest
-import io.github.compose4gtk.modifier.verticalAlignment
-import io.github.compose4gtk.components.LocalApplicationWindow
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.ActionRow
+import io.github.gardencompose.adw.components.ApplicationWindow
+import io.github.gardencompose.adw.components.ExpanderRow
+import io.github.gardencompose.adw.components.HeaderBar
+import io.github.gardencompose.adw.components.StatusPage
+import io.github.gardencompose.adw.components.ToolbarView
+import io.github.gardencompose.components.LocalApplicationWindow
+import io.github.gardencompose.gtk.components.Button
+import io.github.gardencompose.gtk.components.HorizontalBox
+import io.github.gardencompose.gtk.components.Label
+import io.github.gardencompose.gtk.components.ListBox
+import io.github.gardencompose.gtk.components.MediaControls
+import io.github.gardencompose.gtk.components.ScrolledWindow
+import io.github.gardencompose.gtk.components.ToggleButton
+import io.github.gardencompose.gtk.components.VerticalBox
+import io.github.gardencompose.gtk.components.Video
+import io.github.gardencompose.gtk.components.VideoState
+import io.github.gardencompose.gtk.components.rememberVideoState
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.cssClasses
+import io.github.gardencompose.modifier.expand
+import io.github.gardencompose.modifier.horizontalAlignment
+import io.github.gardencompose.modifier.margin
+import io.github.gardencompose.modifier.sizeRequest
+import io.github.gardencompose.modifier.verticalAlignment
 import org.gnome.gio.File
 import org.gnome.gio.ListStore
 import org.gnome.gobject.GObject
@@ -36,7 +36,6 @@ import org.gnome.gtk.Align
 import org.gnome.gtk.FileDialog
 import org.gnome.gtk.FileFilter
 import org.gnome.gtk.SelectionMode
-import java.lang.foreign.MemorySegment
 
 val filter: FileFilter = FileFilter.builder().setName("Video files").setMimeTypes(arrayOf("video/*")).build()
 
@@ -57,7 +56,7 @@ fun main(args: Array<String>) {
             val window = LocalApplicationWindow.current
 
             fun getFile(callback: (File?) -> Unit) {
-                fileDialog.open(window, null) { _: GObject?, result, _: MemorySegment? ->
+                fileDialog.open(window, null) { _: GObject?, result, _ ->
                     val file = try {
                         fileDialog.openFinish(result)
                     } catch (_: Throwable) {

@@ -5,12 +5,12 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import io.github.compose4gtk.adw.adwApplication
-import io.github.compose4gtk.adw.components.*
-import io.github.compose4gtk.gtk.components.*
-import io.github.compose4gtk.modifier.Modifier
-import io.github.compose4gtk.modifier.expand
-import io.github.compose4gtk.modifier.margin
+import io.github.gardencompose.adw.adwApplication
+import io.github.gardencompose.adw.components.*
+import io.github.gardencompose.gtk.components.*
+import io.github.gardencompose.modifier.Modifier
+import io.github.gardencompose.modifier.expand
+import io.github.gardencompose.modifier.margin
 import org.gnome.gtk.Orientation
 
 fun main(args: Array<String>) {
