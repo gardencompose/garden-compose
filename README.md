@@ -1,4 +1,4 @@
-# A Kotlin Compose library for Gtk4 and Adw
+# A Kotlin Compose library for the GNOME ecosystem
 
 ![Welcome](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/welcome.png)
 
