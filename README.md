@@ -15,6 +15,8 @@ This project is a fork of [Compose 4 GTK](https://github.com/compose4gtk/compose
 maintainer of Compose 4 GTK as well as every contributor who made that project possible. As a contributor myself, your
 help and code reviews have been incredibly helpful. Thank you!
 
+I also want to thank the [Java-gi](https://java-gi.org) project and its maintainer.
+
 ### Benefits for Users
 
 Applications built with Garden Compose integrate seamlessly into GNOME, offering a look and feel consistent with other
