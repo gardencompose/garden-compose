@@ -7,7 +7,13 @@ Linux applications using GTK 4, Libadwaita (Adw) and more!
 With this library, developers can build modern, responsive desktop applications in Kotlin, combining the power of
 Compose with the native capabilities of GTK.
 
-Documentation is available on https://garden-compose.github.io/garden-compose.
+Documentation is available on https://gardencompose.github.io/garden-compose.
+
+## Thank you!
+
+This project is a fork of [Compose 4 GTK](https://github.com/compose4gtk/compose-4-gtk). I want to thank the creator and
+maintainer of Compose 4 GTK as well as every contributor who made that project possible. As a contributor myself, your
+help and code reviews have been incredibly helpful. Thank you!
 
 ### Benefits for Users
 
@@ -71,7 +77,7 @@ on [the official documentation](https://developer.android.com/develop/ui/compose
 
 ### Basic window
 
-![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/basic_window.png)
+![Demo](https://raw.githubusercontent.com/gardencompose/garden-compose/main/docs/screenshots/basic_window.png)
 
 Source [here](examples/src/main/kotlin/1_BasicWindow.kt).
 
@@ -103,7 +109,7 @@ creating, updating and destroying the native GTK/ADW widgets.
 
 ### Dynamic window
 
-![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/dynamic_window.gif)
+![Demo](https://raw.githubusercontent.com/gardencompose/garden-compose/main/docs/screenshots/dynamic_window.gif)
 
 Source [here](examples/src/main/kotlin/2_DynamicWindow.kt).
 
@@ -142,7 +148,7 @@ although some concepts only apply to Android.
 
 ### Entry with text transformation
 
-![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/uppercase_entry.png)
+![Demo](https://raw.githubusercontent.com/gardencompose/garden-compose/main/docs/screenshots/uppercase_entry.png)
 
 Source [here](examples/src/main/kotlin/3_Uppercase_Entry.kt).
 
@@ -179,7 +185,7 @@ details.
 
 ### Dynamic tags
 
-![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/tags.gif)
+![Demo](https://raw.githubusercontent.com/gardencompose/garden-compose/main/docs/screenshots/tags.gif)
 
 Source [here](examples/src/main/kotlin/4_DynamicTags.kt).
 
@@ -228,7 +234,7 @@ As a bonus, this example also illustrates how to show toasts using `ToastOverlay
 
 ### ListView
 
-![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/list_view.png)
+![Demo](https://raw.githubusercontent.com/gardencompose/garden-compose/main/docs/screenshots/list_view.png)
 
 Source [here](examples/src/main/kotlin/5_ListView.kt).
 
@@ -256,11 +262,11 @@ This example explains how to declare a `ListView` with 10 thousand items.
 Items are created, reused, updated and destroyed dynamically as the list scrolls.
 
 There are alternative options to create a `ListView`,
-see [the full documentation](https://gardencompose.github.io/gardencompose/-compose%204%20-g-t-k/io.github.gardencompose.gtk.components/-list-view.html).
+see [the full documentation](https://gardencompose.github.io/garden-compose/lib/gtk/io.github.gardencompose.gtk.components/-list-view.html).
 
 ### GIO Resources
 
-![Demo](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/gio_resources.png)
+![Demo](https://raw.githubusercontent.com/gardencompose/garden-compose/main/docs/screenshots/gio_resources.png)
 
 Source [here](examples/src/main/kotlin/6_GIOResources.kt).
 
