@@ -177,6 +177,7 @@ jreleaser {
 
 tasks.register("publishAll") {
     dependsOn(subprojects.map { it.tasks.named("publish") })
+    outputs.upToDateWhen { false }
 }
 
 tasks.named("jreleaserFullRelease") {
