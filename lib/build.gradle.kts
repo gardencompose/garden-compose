@@ -125,6 +125,12 @@ subprojects {
                     }
                 }
             }
+            repositories {
+                maven {
+                    name = "stagingDeploy"
+                    url = uri(rootProject.layout.buildDirectory.dir("staging-deploy"))
+                }
+            }
         }
     }
 }
