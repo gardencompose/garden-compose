@@ -97,6 +97,8 @@ subprojects {
                     artifact(tasks["kotlinSourcesJar"])
 
                     pom {
+                        name = project.name
+                        description = "Garden Compose - ${project.name} module"
                         inceptionYear = "2023"
                         url = "https://github.com/gardencompose/garden-compose"
                         licenses {
@@ -177,7 +179,6 @@ jreleaser {
 
 tasks.register("publishAll") {
     dependsOn(subprojects.map { it.tasks.named("publish") })
-    outputs.upToDateWhen { false }
 }
 
 tasks.named("jreleaserFullRelease") {
