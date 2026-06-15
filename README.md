@@ -2,17 +2,16 @@
 
 ![Welcome](https://raw.githubusercontent.com/gardencompose/gardencompose/main/docs/screenshots/welcome.png)
 
-**Compose 4 GTK** is a Kotlin library that brings the Jetpack Compose-style declarative UI development model to native
-Linux
-applications using GTK 4 and Libadwaita (Adw).  
+**Garden Compose** is a Kotlin library that brings the Jetpack Compose-style declarative UI development model to native
+Linux applications using GTK 4, Libadwaita (Adw) and more!
 With this library, developers can build modern, responsive desktop applications in Kotlin, combining the power of
 Compose with the native capabilities of GTK.
 
-Documentation is available on https://gardencompose.github.io/gardencompose.
+Documentation is available on https://garden-compose.github.io/garden-compose.
 
 ### Benefits for Users
 
-Applications built with Compose 4 GTK integrate seamlessly into GNOME, offering a look and feel consistent with other
+Applications built with Garden Compose integrate seamlessly into GNOME, offering a look and feel consistent with other
 GTK applications.
 
 They are customizable, accessible, and performant—leveraging modern APIs like Wayland and the latest optimizations from
@@ -20,11 +19,11 @@ the GTK ecosystem.
 
 ### Benefits for Developers
 
-Building dynamic UIs with **Compose 4 GTK** is simple, consistent, and predictable.  
+Building dynamic UIs with **Garden Compose** is simple, consistent, and predictable.  
 You write UIs using declarative, stateless, and side-effect-free functions, letting the framework manage the creation,
 updating, and destruction of GTK widgets automatically.
 
-Jetpack Compose is the default and recommended UI framework for Android—and now, with **Compose 4 GTK**, you can bring
+Jetpack Compose is the default and recommended UI framework for Android—and now, with **Garden Compose**, you can bring
 that
 same declarative power to the Linux desktop.
 
@@ -93,7 +92,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-This first example highlights the structure of **Compose 4 GTK** projects:
+This first example highlights the structure of **Garden Compose** projects:
 
 - a call to `adwApplication` to initialize the application
 - one or more `ApplicationWindow`
