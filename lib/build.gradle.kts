@@ -24,7 +24,7 @@ dependencies {
 }
 
 group = "io.github.gardencompose"
-version = "0.0-SNAPSHOT"
+version = "0.0.0"
 gitVersioning.apply {
     refs {
         tag("v(?<version>.*)") {
@@ -60,7 +60,7 @@ val readMeToDocIndexTask = tasks.register<Copy>("readmeToDocIndex") {
             line
                 .replace(
                     "](examples/",
-                    "](https://github.com/garden-compose/garden-compose/blob/main/examples/",
+                    "](https://github.com/gardencompose/garden-compose/blob/main/examples/",
                 )
         }
     }
@@ -72,7 +72,7 @@ tasks.named("dokkaGeneratePublicationHtml") {
 }
 
 dokka {
-    moduleName.set("Compose 4 GTK")
+    moduleName.set("Garden Compose")
     dokkaPublications.html {
         failOnWarning.set(true)
         includes.from(layout.buildDirectory.dir("generated-doc/main.md"))
@@ -86,7 +86,7 @@ tasks.register<Jar>("dokkaHtmlJar") {
 }
 
 subprojects {
-    group = "io.github.garden-compose"
+    group = "io.github.gardencompose"
 
     plugins.withId("maven-publish") {
         publishing {
@@ -98,7 +98,7 @@ subprojects {
 
                     pom {
                         inceptionYear = "2023"
-                        url = "https://github.com/garden-compose/garden-compose"
+                        url = "https://github.com/gardencompose/garden-compose"
                         licenses {
                             license {
                                 name = "GNU Lesser General Public License v3.0"
@@ -116,22 +116,13 @@ subprojects {
                             }
                         }
                         contributors {
-                            contributor {
-                                name = "Thomas Lavoie"
-                                email = "lavoiethomas17@gmail.com"
-                            }
                         }
                         scm {
-                            connection = "scm:git:git://github.com/garden-compose/garden-compose.git"
-                            developerConnection = "scm:git:ssh://github.com:garden-compose/garden-compose.git"
-                            url = "https://github.com/garden-compose/garden-compose"
+                            connection = "scm:git:git://github.com/gardencompose/garden-compose.git"
+                            developerConnection = "scm:git:ssh://github.com/gardencompose/garden-compose.git"
+                            url = "https://github.com/gardencompose/garden-compose"
                         }
                     }
-                }
-            }
-            repositories {
-                maven {
-                    setUrl(layout.buildDirectory.dir("staging-deploy"))
                 }
             }
         }
@@ -163,8 +154,6 @@ jreleaser {
                 active = Active.RELEASE
                 url = "https://central.sonatype.com/api/v1/publisher"
                 retryDelay = 60
-                setAuthorization("Basic")
-                stagingRepository("build/staging-deploy")
             }
             // TODO: make snapshots work
             // mavenCentral.create("snapshot-deploy") {
