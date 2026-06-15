@@ -21,9 +21,6 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
       - name: Release
         run: |
-          ./gradlew properties | grep "^version:"
-          ./gradlew publishAll
-          find build/staging-deploy -name "*.jar" -o -name "*.pom" | head -20
           ./gradlew jreleaserFullRelease
         env:
           JRELEASER_MAVENCENTRAL_USERNAME: ${{ secrets.JRELEASER_MAVENCENTRAL_USERNAME }}

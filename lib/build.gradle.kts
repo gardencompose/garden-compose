@@ -160,7 +160,7 @@ jreleaser {
                 active = Active.RELEASE
                 url = "https://central.sonatype.com/api/v1/publisher"
                 retryDelay = 60
-                stagingRepository("build/staging-deploy")
+                stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath)
             }
             // TODO: make snapshots work
             // mavenCentral.create("snapshot-deploy") {
