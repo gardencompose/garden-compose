@@ -63,7 +63,9 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.gardencompose:gardencompose:<latest-version>")
+    implementation("io.github.gardencompose:core:<latest-version>")
+    implementation("io.github.gardencompose:gtk:<latest-version>")
+    implementation("io.github.gardencompose:adw:<latest-version>")
 }
 
 application {
