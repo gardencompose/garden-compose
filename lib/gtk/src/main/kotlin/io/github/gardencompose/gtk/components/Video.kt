@@ -256,9 +256,18 @@ fun Video(
     graphicsOffload: GraphicsOffloadEnabled = GraphicsOffloadEnabled.DISABLED,
     loop: Boolean = false,
 ) {
+    val gObject = GtkVideo()
+
+    // Pause the stream so it does not continue in the background
+    DisposableEffect(Unit) {
+        onDispose {
+            gObject.mediaStream?.pause()
+        }
+    }
+
     BaseVideo(
         creator = {
-            LeafComposeNode(GtkVideo())
+            LeafComposeNode(gObject)
         },
         modifier = modifier,
         file = file,
