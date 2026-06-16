@@ -99,7 +99,7 @@ subprojects {
                     pom {
                         name = project.name
                         description = "Garden Compose - ${project.name} module"
-                        inceptionYear = "2023"
+                        inceptionYear = "2026"
                         url = "https://github.com/gardencompose/garden-compose"
                         licenses {
                             license {
