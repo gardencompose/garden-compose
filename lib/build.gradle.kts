@@ -89,12 +89,19 @@ subprojects {
     group = "io.github.gardencompose"
 
     plugins.withId("maven-publish") {
+        val dokkaJavadocJar = tasks.register<Jar>("dokkaJavadocJar") {
+            dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
+            from(layout.buildDirectory.dir("dokka/generatePublicationHtml"))
+            archiveClassifier = "javadoc"
+        }
+
         publishing {
             publications {
                 create<MavenPublication>("mavenJava") {
                     from(components["kotlin"])
                     artifactId = project.name
                     artifact(tasks["kotlinSourcesJar"])
+                    artifact(dokkaJavadocJar)
 
                     pom {
                         name = project.name
