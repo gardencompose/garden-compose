@@ -133,19 +133,19 @@ class VirtualComposeNodeContainer<W : Widget>(widget: W) : GtkComposeWidget<W>(w
 }
 
 abstract class GtkContainerComposeNode<W : Widget>(widget: W) : GtkComposeContainer<W>(widget) {
-    private val _children = mutableListOf<Widget>()
-    protected val children: List<Widget> = _children
+    private val childrenMutable = mutableListOf<Widget>()
+    protected val children: List<Widget> = childrenMutable
     override fun addNode(index: Int, child: GtkComposeWidget<Widget>) {
         val childWidget = child.widget
-        _children.add(index, childWidget)
+        childrenMutable.add(index, childWidget)
     }
 
     override fun removeNode(index: Int) {
-        _children.removeAt(index)
+        childrenMutable.removeAt(index)
     }
 
     override fun clearNodes() {
-        _children.clear()
+        childrenMutable.clear()
     }
 
     companion object {

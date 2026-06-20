@@ -60,6 +60,7 @@ private class NavigationViewStateImpl : NavigationViewState {
         }
     override var visiblePage: AdwNavigationPage? = navigationView?.visiblePage
     override var visiblePageTag: String? = navigationView?.visiblePageTag
+
     override fun findPage(tag: String): AdwNavigationPage? {
         return navigationView?.findPage(tag)
     }

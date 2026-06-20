@@ -16,15 +16,15 @@ dependencies {
     implementation(libs.slf4j.api)
     implementation(libs.kotlin.logging)
 
-    detektPlugins(libs.detekt.formatting)
     detektPlugins(libs.detekt.compose)
+    detektPlugins(libs.detekt.ktlint)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.slf4j.simple)
 }
 
 kotlin {
-    jvmToolchain(22)
+    jvmToolchain(25)
 }
 
 tasks.test {

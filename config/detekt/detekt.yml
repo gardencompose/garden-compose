@@ -1,7 +1,7 @@
 complexity:
   # Compose functions tend to be longer and have a lot of parameters
   LongMethod:
-    threshold: 150
+    allowedLines: 150
   LongParameterList:
     ignoreDefaultParameters: true
 
@@ -23,10 +23,10 @@ style:
       - io.github.gardencompose.gtk.components.*
   MagicNumber:
     excludes:
-      - '**/test/**'
-      - '**/tests/**'
+      - "**/test/**"
+      - "**/tests/**"
 
-formatting:
+ktlint:
   NoWildcardImports:
     packagesToUseImportOnDemandProperty:
       "io.github.gardencompose.adw.components.*,io.github.gardencompose.gtk.components.*"
@@ -36,18 +36,25 @@ formatting:
     active: true
   Filename:
     # Examples have a number prepended to the file name, to ensure users can read them in order
-    excludes: '**/examples/**'
+    excludes:
+      - "**/examples/**"
+  FunctionSignature:
+    active: false
+  ClassSignature:
+    active: false
+  FunctionExpressionBody:
+    active: false
 
 Compose:
   active: true
   ModifierMissing:
     excludes:
-      - '**/test/**'
-      - '**/tests/**'
+      - "**/test/**"
+      - "**/tests/**"
   MutableStateParam:
     excludes:
-      - '**/test/**'
-      - '**/tests/**'
+      - "**/test/**"
+      - "**/tests/**"
   CompositionLocalAllowlist:
     active: true
     allowedCompositionLocals:

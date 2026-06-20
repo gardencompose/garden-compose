@@ -117,15 +117,8 @@ fun main(args: Array<String>) {
 }
 
 @Composable
-private fun Card(
-    title: String,
-    content: @Composable () -> Unit,
-) {
-    VerticalBox(
-        modifier = Modifier
-            .margin(16),
-        spacing = 16,
-    ) {
+private fun Card(title: String, content: @Composable () -> Unit) {
+    VerticalBox(modifier = Modifier.margin(16), spacing = 16) {
         Label(title)
 
         Box(

@@ -41,7 +41,7 @@ fun Calendar(
     modifier: Modifier = Modifier,
     day: Int = 1,
     month: Int = 0,
-    year: Int = DateTime.nowLocal().year,
+    year: Int = DateTime.nowLocal()?.year ?: 0,
     showDayNames: Boolean = true,
     showHeading: Boolean = true,
     showWeekNumber: Boolean = false,
@@ -101,7 +101,7 @@ fun Calendar(
 @Composable
 fun Calendar(
     modifier: Modifier = Modifier,
-    date: LocalDate = LocalDate(year = DateTime.nowLocal().year, month = Month.JANUARY, day = 1),
+    date: LocalDate = LocalDate(year = DateTime.nowLocal()?.year ?: 0, month = Month.JANUARY, day = 1),
     showDayNames: Boolean = true,
     showHeading: Boolean = true,
     showWeekNumber: Boolean = false,

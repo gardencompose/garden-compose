@@ -6,7 +6,7 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(22)
+    jvmToolchain(25)
 }
 
 repositories {
@@ -20,8 +20,9 @@ dependencies {
     implementation(project(":lib:adw"))
     implementation(libs.slf4j.api)
     implementation(libs.slf4j.simple)
-    detektPlugins(libs.detekt.formatting)
+
     detektPlugins(libs.detekt.compose)
+    detektPlugins(libs.detekt.ktlint)
 }
 
 tasks.named("assemble") {

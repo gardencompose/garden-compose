@@ -23,6 +23,7 @@ private class GtkTextViewComposeNode(gObject: GtkTextView) : LeafComposeNode<Gtk
 }
 
 // TODO: extra-menu, im-module, overwrite? (insert), tabs
+
 /**
  * Creates a [org.gnome.gtk.TextView], useful for entering large amounts of text.
  *

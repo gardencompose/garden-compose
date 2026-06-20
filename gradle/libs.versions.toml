@@ -1,26 +1,25 @@
 [versions]
 kotlin = "2.3.0"
 compose = "1.10.0"
-javagi = "0.14.1"
+javagi = "1.0.0-RC1"
 dokka = "2.0.0"
 kotlin-logging = "7.0.13"
 kotlinx-datetime = "0.7.1"
 slf4j = "2.0.17"
 versioning = "6.4.4"
-detekt = "1.23.8"
-detekt-formatting = "1.23.8"
-detekt-compose = "0.4.27"
+detekt = "2.0.0-alpha.3"
+detekt-compose = "0.6.1"
 
 [libraries]
-compose-runtime = {group = "org.jetbrains.compose.runtime", "name" = "runtime", version.ref = "compose"}
+compose-runtime = { group = "org.jetbrains.compose.runtime", "name" = "runtime", version.ref = "compose" }
 javagi-gtk = { group = "org.java-gi", name = "gtk", version.ref = "javagi" }
 javagi-adw = { group = "org.java-gi", name = "adw", version.ref = "javagi" }
-kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlin-logging"}
-kotlinx-datetime = { group = "org.jetbrains.kotlinx", name="kotlinx-datetime", version.ref = "kotlinx-datetime" }
-slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j"}
-slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j"}
-detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt-formatting"}
-detekt-compose = { group = "io.nlopez.compose.rules", name = "detekt", version.ref = "detekt-compose"}
+kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlin-logging" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
+slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
+detekt-compose = { group = "io.nlopez.compose.rules", name = "detekt", version.ref = "detekt-compose" }
+detekt-ktlint = { group = "dev.detekt", name = "detekt-rules-ktlint-wrapper", version.ref = "detekt" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -28,4 +27,4 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 versioning = { id = "me.qoomon.git-versioning", version.ref = "versioning" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+detekt = { id = "dev.detekt", version.ref = "detekt" }

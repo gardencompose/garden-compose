@@ -48,8 +48,11 @@ fun main(args: Array<String>) {
                     ) { page ->
                         when (page) {
                             0 -> Presentation()
+
                             1 -> Settings(allowLongSwipes, allowMouseDrag, allowScrollWheel)
+
                             2 -> MoreSettings(orientation)
+
                             else -> {
                                 StatusPage(title = "Page $page", description = "Status page $page") {
                                     VerticalBox {

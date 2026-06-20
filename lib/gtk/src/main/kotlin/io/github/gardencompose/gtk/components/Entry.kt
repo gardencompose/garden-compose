@@ -256,6 +256,7 @@ private fun GtkEntryComposeNode.applyIcon(
                 }
             }
         }
+
         EntryIconPosition.SECONDARY -> {
             onSecondaryIconPress?.disconnect()
             onSecondaryIconPress = widget.onIconPress { position ->

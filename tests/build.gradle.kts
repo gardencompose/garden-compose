@@ -12,8 +12,9 @@ dependencies {
     implementation(libs.slf4j.api)
     implementation(libs.slf4j.simple)
     implementation(libs.kotlin.logging)
-    detektPlugins(libs.detekt.formatting)
+
     detektPlugins(libs.detekt.compose)
+    detektPlugins(libs.detekt.ktlint)
 }
 
 repositories {
@@ -22,7 +23,7 @@ repositories {
 }
 
 kotlin {
-    jvmToolchain(22)
+    jvmToolchain(25)
 }
 
 tasks.named("assemble") {

@@ -11,14 +11,14 @@ dependencies {
     api(libs.compose.runtime)
     api(libs.javagi.gtk)
 
-    detektPlugins(libs.detekt.formatting)
     detektPlugins(libs.detekt.compose)
+    detektPlugins(libs.detekt.ktlint)
 
     testImplementation(kotlin("test"))
 }
 
 kotlin {
-    jvmToolchain(22)
+    jvmToolchain(25)
 }
 
 tasks.test {
