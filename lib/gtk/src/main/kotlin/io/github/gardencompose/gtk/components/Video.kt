@@ -3,6 +3,7 @@ package io.github.gardencompose.gtk.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ComposeNode
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableLongStateOf
@@ -15,8 +16,10 @@ import io.github.gardencompose.LeafComposeNode
 import io.github.gardencompose.modifier.Modifier
 import org.gnome.gio.File
 import org.gnome.glib.GError
+import org.gnome.gobject.GObject
 import org.gnome.gobject.ParamSpec
 import org.gnome.gtk.GraphicsOffloadEnabled
+import org.javagi.gobject.SignalConnection
 import org.gnome.gtk.Video as GtkVideo
 
 sealed interface VideoState {
@@ -182,14 +185,47 @@ private fun <V : GtkComposeWidget<GtkVideo>> BaseVideo(
     graphicsOffload: GraphicsOffloadEnabled = GraphicsOffloadEnabled.DISABLED,
     loop: Boolean = false,
 ) {
+    var gObject by remember { mutableStateOf<GtkVideo?>(null) }
+    var loopHandler by remember { mutableStateOf<SignalConnection<GObject.NotifyCallback>?>(null) }
+
+    LaunchedEffect(gObject) {
+        val stream = gObject?.mediaStream ?: return@LaunchedEffect
+
+        stream.onNotify("timestamp") { _: ParamSpec? ->
+            val timestamp = gObject?.mediaStream?.timestamp ?: return@onNotify
+            val duration = gObject?.mediaStream?.duration ?: return@onNotify
+            if (timestamp >= duration) {
+                if (stream.loop) {
+                    stream.seek(0)
+                }
+            }
+        }
+    }
+
+    // Pause the stream so it does not continue in the background
+    DisposableEffect(Unit) {
+        onDispose {
+            loopHandler?.disconnect()
+            loopHandler = null
+            gObject?.mediaStream?.pause()
+        }
+    }
+
     ComposeNode<V, GtkApplier>(
-        factory = creator,
+        factory = {
+            val creator = creator()
+            gObject = creator.widget
+            creator
+        },
         update = {
             set(modifier) { applyModifier(modifier) }
             set(file) { this.widget.file = it }
             set(autoplay) { this.widget.autoplay = it }
             set(graphicsOffload) { this.widget.graphicsOffload = it }
-            set(loop) { this.widget.mediaStream?.loop = it }
+            set(loop) {
+                this.widget.loop = it
+                this.widget.mediaStream?.loop = it
+            }
         },
     )
 }
@@ -215,13 +251,6 @@ fun Video(
 ) {
     val stateImpl: VideoStateImpl = when (state) {
         is VideoStateImpl -> state
-    }
-
-    // Pause the stream so it does not continue in the background
-    DisposableEffect(Unit) {
-        onDispose {
-            stateImpl.video?.mediaStream?.pause()
-        }
     }
 
     BaseVideo(
@@ -256,19 +285,8 @@ fun Video(
     graphicsOffload: GraphicsOffloadEnabled = GraphicsOffloadEnabled.DISABLED,
     loop: Boolean = false,
 ) {
-    val gObject = GtkVideo()
-
-    // Pause the stream so it does not continue in the background
-    DisposableEffect(Unit) {
-        onDispose {
-            gObject.mediaStream?.pause()
-        }
-    }
-
     BaseVideo(
-        creator = {
-            LeafComposeNode(gObject)
-        },
+        creator = { LeafComposeNode(GtkVideo()) },
         modifier = modifier,
         file = file,
         autoplay = autoplay,
