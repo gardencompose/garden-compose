@@ -42,7 +42,7 @@ same declarative power to the Linux desktop.
 This library is still under development. Pre-release versions are
 available on [Maven Central](https://central.sonatype.com/artifact/io.github.gardencompose/gardencompose).
 
-JDK 22 or newer and the Kotlin Compose compiler plugin are required.
+JDK 25 or newer and the Kotlin Compose compiler plugin are required.
 
 For example, on your `build.gradle.kts`:
 
@@ -54,7 +54,7 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(22)
+    jvmToolchain(25)
 }
 
 repositories {
