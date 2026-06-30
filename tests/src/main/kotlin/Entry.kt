@@ -19,30 +19,29 @@ fun main(args: Array<String>) {
     useGioResource("resources.gresource") {
         adwApplication("my.example.hello-app", args) {
             ApplicationWindow(title = "Entry", onClose = ::exitApplication) {
-                VerticalBox(
-                    spacing = 8,
-                    modifier = Modifier.margin(8),
-                ) {
+                VerticalBox {
                     HeaderBar(modifier = Modifier.cssClasses("flat"))
 
                     var tempInfo by remember { mutableStateOf("") }
                     var info by remember { mutableStateOf("") }
                     var visible by remember { mutableStateOf(true) }
 
-                    Label(text = "Saved info: $info")
-                    Label(text = "Press enter to save", modifier = Modifier.cssClasses("dimmed"))
+                    VerticalBox(modifier = Modifier.margin(8), spacing = 8) {
+                        Label(text = "Saved info: $info")
+                        Label(text = "Press enter to save", modifier = Modifier.cssClasses("dimmed"))
 
-                    Entry(
-                        text = tempInfo,
-                        onTextChange = { tempInfo = it },
-                        onActivate = { info = tempInfo },
-                        primaryIcon = if (visible) ImageSource.Icon("heart-filled-symbolic") else null,
-                        onPrimaryIconPress = { println("Liked \"$tempInfo\"!") },
-                        secondaryIcon = if (visible) ImageSource.Icon("system-search-symbolic") else null,
-                        onSecondaryIconPress = { println("Searching for \"$tempInfo\"...") },
-                    )
+                        Entry(
+                            text = tempInfo,
+                            onTextChange = { tempInfo = it },
+                            onActivate = { info = tempInfo },
+                            primaryIcon = if (visible) ImageSource.Icon("heart-filled-symbolic") else null,
+                            onPrimaryIconPress = { println("Liked \"$tempInfo\"!") },
+                            secondaryIcon = if (visible) ImageSource.Icon("system-search-symbolic") else null,
+                            onSecondaryIconPress = { println("Searching for \"$tempInfo\"...") },
+                        )
 
-                    ToggleButton(active = visible, label = "Toggle icons", onToggle = { visible = !visible })
+                        ToggleButton(active = visible, label = "Toggle icons", onToggle = { visible = !visible })
+                    }
                 }
             }
         }
