@@ -59,7 +59,6 @@ internal fun <E : GtkEditableComposeNode<*>> Editable(
     onTextChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     editable: Boolean = true,
-    visibility: Boolean = true,
     alignment: Float = 0f,
     enableUndo: Boolean = true,
     maxWidthChars: Int = -1,
@@ -138,7 +137,6 @@ internal fun <E : GtkEditableComposeNode<*>> Editable(
                 }
             }
             set(editable) { this.widget.editable = it }
-            set(visibility) { this.widget.visible = it }
             set(alignment) { this.widget.alignment = it }
             set(enableUndo) { this.widget.enableUndo = it }
             set(maxWidthChars) { this.widget.maxWidthChars = it }
