@@ -48,7 +48,7 @@ fun main(args: Array<String>) {
                                 onActivate = { login() },
                                 placeholderText = "Password (Controlled)",
                                 showPeekIcon = true,
-                                onVisibilityChange = { visibility = it },
+                                onVisibilityChange = { },
                                 visibility = visibility,
                             )
                             Button(label = "Switch visibility", onClick = { visibility = !visibility })

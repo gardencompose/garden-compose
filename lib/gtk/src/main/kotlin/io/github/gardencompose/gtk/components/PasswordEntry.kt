@@ -61,6 +61,25 @@ private fun BasePasswordEntry(
     )
 }
 
+/**
+ * Creates a [org.gnome.gtk.Entry] used to input text.
+ *
+ * @param text The text in the entry.
+ * @param onTextChange Callback triggered when the text is changed.
+ * @param modifier Compose [Modifier] for layout and styling.
+ * @param onActivate Callback triggered when the entry is activated (for example: pressing the `Enter` key).
+ * @param editable Whether the text can be edited.
+ * for the window containing the entry.
+ * @param alignment The alignment for the contents of the entry.
+ * @param enableUndo Whether changes to this entry will be saved for undo/redo actions.
+ * @param maxWidthChars The desired maximum width of the entry, in characters.
+ * @param widthChars Number of characters to leave space for in the entry.
+ * @param placeholderText Placeholder text displayed when the entry is empty.
+ * @param showPeekIcon Whether the peek icon is shown.
+ *
+ * TODO:
+ *  - setExtraMenu
+ */
 @Composable
 fun PasswordEntry(
     text: String,
@@ -105,6 +124,10 @@ fun PasswordEntry(
  * @param enableUndo Whether changes to this entry will be saved for undo/redo actions.
  * @param maxWidthChars The desired maximum width of the entry, in characters.
  * @param widthChars Number of characters to leave space for in the entry.
+ * @param placeholderText Placeholder text displayed when the entry is empty.
+ * @param showPeekIcon Whether the peek icon is shown.
+ * @param onVisibilityChange Callback triggered when visibility is changed.
+ * @param visibility Whether the text inside the entry is visible or hidden.
  *
  * TODO:
  *  - setExtraMenu
@@ -129,30 +152,14 @@ fun ControlledPasswordEntry(
     val passwordEntry = remember { GtkPasswordEntry() }
     val textWidget = remember { passwordEntry.firstChild as Text }
 
-    Editable(
+    BasePasswordEntry(
         creator = { GtkPasswordEntryComposeNode(passwordEntry) },
         updater = {
-            set(onActivate) {
-                this.onActivate?.disconnect()
-                this.onActivate = this.widget.onActivate {
-                    this.onActivate?.block()
-                    onActivate()
-                    this.onActivate?.unblock()
-                }
-            }
-            set(placeholderText) { this.widget.set("placeholder-text", it) }
-            set(showPeekIcon) { this.widget.showPeekIcon = it }
             set(onVisibilityChange) {
                 this.onVisibilityChange?.disconnect()
                 this.onVisibilityChange = textWidget.onNotify("visibility") {
-                    val newValue = textWidget.visibility
-
-                    this.onVisibilityChange?.block()
-                    textWidget.visibility = visibility
-                    this.onVisibilityChange?.unblock()
-
-                    it(newValue)
                     pendingChange++
+                    it(textWidget.visibility)
                 }
             }
             set(visibility to pendingChange) { (visibility, _) ->
@@ -164,10 +171,13 @@ fun ControlledPasswordEntry(
         text = text,
         onTextChange = onTextChange,
         modifier = modifier,
+        onActivate = { onActivate() },
         editable = editable,
         alignment = alignment,
         enableUndo = enableUndo,
         maxWidthChars = maxWidthChars,
         widthChars = widthChars,
+        placeholderText = placeholderText,
+        showPeekIcon = showPeekIcon,
     )
 }
