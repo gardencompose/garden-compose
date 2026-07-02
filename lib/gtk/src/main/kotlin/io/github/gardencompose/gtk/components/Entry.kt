@@ -139,11 +139,13 @@ private fun GtkEntryComposeNode.applyIcon(
     if (icon != null) {
         if (child is Image) child.visible = true
         widget.setIconFromIconName(entryIconPosition, icon.iconName)
+        widget.setIconSensitive(entryIconPosition, sensitive)
     } else {
-        if (child is Image) child.visible = false
-        widget.setIconFromIconName(entryIconPosition, null)
+        if (child is Image) {
+            child.visible = false
+            widget.setIconFromIconName(entryIconPosition, null)
+        }
     }
-    widget.setIconSensitive(entryIconPosition, sensitive)
 
     when (entryIconPosition) {
         EntryIconPosition.PRIMARY -> {
