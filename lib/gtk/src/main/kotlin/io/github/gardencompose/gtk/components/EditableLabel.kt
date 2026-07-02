@@ -11,7 +11,6 @@ import org.gnome.gtk.EditableLabel as GtkEditableLabel
  * @param onTextChange Callback triggered when the text is changed.
  * @param modifier Compose [Modifier] for layout and styling.
  * @param editable Whether the text can be edited.
- * @param visibility Whether the contents of the entry are visible.
  * @param alignment The alignment for the contents of the entry.
  * @param enableUndo Whether changes to this entry will be saved for undo/redo actions.
  * @param maxWidthChars The desired maximum width of the entry, in characters.
@@ -23,7 +22,6 @@ fun EditableLabel(
     onTextChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     editable: Boolean = true,
-    visibility: Boolean = true,
     alignment: Float = 0f,
     enableUndo: Boolean = true,
     maxWidthChars: Int = -1,
@@ -36,7 +34,6 @@ fun EditableLabel(
         onTextChange = onTextChange,
         modifier = modifier,
         editable = editable,
-        visibility = visibility,
         alignment = alignment,
         enableUndo = enableUndo,
         maxWidthChars = maxWidthChars,

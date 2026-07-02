@@ -29,9 +29,9 @@ private val emptyAttributes = AttrList()
  * @param onTextChange Callback triggered when the text is changed.
  * @param modifier Compose [Modifier] for layout and styling.
  * @param attributes A list of Pango attributes to apply to the text of the entry.
+ * @param onActivate Callback triggered when the entry is activated (for example: pressing the `Enter` key).
  * @param placeholderText The text displayed when the entry is empty and unfocused.
  * @param editable Whether the text can be edited.
- * @param visibility Whether the contents of the entry are visible.
  * @param activatesDefault Whether pressing `Enter` in will activate the default widget
  * for the window containing the entry.
  * @param alignment The alignment for the contents of the entry.
@@ -57,7 +57,6 @@ fun Entry(
     onTextChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     editable: Boolean = true,
-    visibility: Boolean = true,
     alignment: Float = 0f,
     enableUndo: Boolean = true,
     maxWidthChars: Int = -1,
@@ -100,7 +99,6 @@ fun Entry(
             }
             set(placeholderText) { this.widget.placeholderText = it }
             set(editable) { this.widget.editable = it }
-            set(visibility) { this.widget.visibility = it }
             set(activatesDefault) { this.widget.activatesDefault = it }
             set(alignment) { this.widget.alignment = it }
             set(hasFrame) { this.widget.hasFrame = it }
@@ -124,7 +122,6 @@ fun Entry(
         onTextChange = onTextChange,
         modifier = modifier,
         editable = editable,
-        visibility = visibility,
         alignment = alignment,
         enableUndo = enableUndo,
         maxWidthChars = maxWidthChars,
