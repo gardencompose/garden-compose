@@ -6,8 +6,8 @@ import io.github.gardencompose.adw.adwApplication
 import io.github.gardencompose.adw.components.ApplicationWindow
 import io.github.gardencompose.adw.components.HeaderBar
 import io.github.gardencompose.gtk.components.Button
-import io.github.gardencompose.gtk.components.Entry
 import io.github.gardencompose.gtk.components.ControlledPasswordEntry
+import io.github.gardencompose.gtk.components.Entry
 import io.github.gardencompose.gtk.components.Frame
 import io.github.gardencompose.gtk.components.PasswordEntry
 import io.github.gardencompose.gtk.components.VerticalBox
