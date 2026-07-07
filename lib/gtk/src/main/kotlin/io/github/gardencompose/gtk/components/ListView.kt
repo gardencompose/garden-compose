@@ -39,8 +39,8 @@ private fun <T : GObject> BaseControlledListView(
     singleClickActivate: Boolean = false,
     showSeparators: Boolean = false,
     tabBehaviour: ListTabBehavior = ListTabBehavior.ALL,
-    onActivate: ((position: Int) -> Unit)? = null,
-    onSelectionChange: ((positions: Set<Int>) -> Unit)? = null,
+    onActivate: (position: Int) -> Unit = {},
+    onSelectionChange: (positions: Set<Int>) -> Unit = {},
     child: @Composable (item: T) -> Unit,
 ) {
     val compositionContext = rememberCompositionContext()
@@ -62,11 +62,7 @@ private fun <T : GObject> BaseControlledListView(
             set(tabBehaviour) { this.widget.tabBehavior = it }
             set(onActivate) {
                 this.onActivate?.disconnect()
-                if (onActivate != null) {
-                    this.onActivate = this.widget.onActivate(it)
-                } else {
-                    this.onActivate = null
-                }
+                this.onActivate = this.widget.onActivate(it)
             }
             set(onSelectionChange) {
                 this.onSelectionChanges?.disconnect()
@@ -78,7 +74,7 @@ private fun <T : GObject> BaseControlledListView(
                             positions.add(position)
                         }
                     }
-                    onSelectionChange?.invoke(positions.toSet())
+                    onSelectionChange(positions.toSet())
                 }
             }
             set(selectedItems to selectedItems?.size to pendingChange) {
@@ -116,7 +112,7 @@ fun <T : GObject> ListView(
     singleClickActivate: Boolean = false,
     showSeparators: Boolean = false,
     tabBehaviour: ListTabBehavior = ListTabBehavior.ALL,
-    onActivate: ((position: Int) -> Unit)? = null,
+    onActivate: (position: Int) -> Unit = {},
     child: @Composable (item: T) -> Unit,
 ) {
     BaseControlledListView(
@@ -163,7 +159,7 @@ fun <M : SelectionModel<ListIndexModel.ListIndex>> ListView(
     singleClickActivate: Boolean = false,
     showSeparators: Boolean = false,
     tabBehaviour: ListTabBehavior = ListTabBehavior.ALL,
-    onActivate: ((position: Int) -> Unit)? = null,
+    onActivate: (position: Int) -> Unit = {},
     child: @Composable (index: Int) -> Unit,
 ): M {
     val selectionModel = rememberSelectionModel(itemsCount = items, selectionMode = selectionMode)
@@ -204,8 +200,8 @@ fun <T : GObject> ControlledListView(
     singleClickActivate: Boolean = false,
     showSeparators: Boolean = false,
     tabBehaviour: ListTabBehavior = ListTabBehavior.ALL,
-    onActivate: ((position: Int) -> Unit)? = null,
-    onSelectionChange: ((positions: Set<Int>) -> Unit)? = null,
+    onActivate: (position: Int) -> Unit = {},
+    onSelectionChange: (positions: Set<Int>) -> Unit = {},
     child: @Composable (item: T) -> Unit,
 ) {
     val model = rememberMultiSelectionModel(items)
@@ -247,8 +243,8 @@ fun <T : GObject> ControlledListView(
     singleClickActivate: Boolean = false,
     showSeparators: Boolean = false,
     tabBehaviour: ListTabBehavior = ListTabBehavior.ALL,
-    onActivate: ((position: Int) -> Unit)? = null,
-    onSelectionChange: ((positions: Int?) -> Unit)? = null,
+    onActivate: (position: Int) -> Unit = {},
+    onSelectionChange: (positions: Int?) -> Unit = {},
     child: @Composable (item: T) -> Unit,
 ) {
     val model = rememberSingleSelectionModel(items)
@@ -269,9 +265,9 @@ fun <T : GObject> ControlledListView(
         onActivate = onActivate,
         onSelectionChange = { positions ->
             if (positions.isNotEmpty()) {
-                onSelectionChange?.invoke(positions.first())
+                onSelectionChange(positions.first())
             } else {
-                onSelectionChange?.invoke(null)
+                onSelectionChange(null)
             }
         },
         child = child,
@@ -298,7 +294,7 @@ fun <T : GObject> ControlledListView(
     singleClickActivate: Boolean = false,
     showSeparators: Boolean = false,
     tabBehaviour: ListTabBehavior = ListTabBehavior.ALL,
-    onActivate: ((position: Int) -> Unit)? = null,
+    onActivate: (position: Int) -> Unit = {},
     child: @Composable (item: T) -> Unit,
 ) {
     val model = rememberNoSelectionModel(items)
