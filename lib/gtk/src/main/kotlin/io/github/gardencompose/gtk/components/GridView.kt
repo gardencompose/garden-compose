@@ -9,7 +9,7 @@ import org.gnome.gobject.GObject
 import org.gnome.gtk.ListTabBehavior
 import org.gnome.gtk.SelectionModel
 import org.javagi.gio.ListIndexModel
-import org.gnome.gtk.GridView as GTKGridView
+import org.gnome.gtk.GridView as GtkGridView
 
 /**
  * Creates a [org.gnome.gtk.GridView] with [items] items.
@@ -68,10 +68,10 @@ fun <T : GObject> GridView(
 ) {
     val compositionContext = rememberCompositionContext()
 
-    ComposeNode<BaseListComposeNode<GTKGridView, GTKGridView.ActivateCallback>, GtkApplier>(
+    ComposeNode<BaseListComposeNode<GtkGridView, GtkGridView.ActivateCallback>, GtkApplier>(
         factory = {
             BaseListComposeNode(
-                gObject = GTKGridView.builder()
+                gObject = GtkGridView.builder()
                     .setFactory(createListItemFactory(compositionContext, child))
                     .build(),
             )

@@ -19,7 +19,7 @@ import org.gnome.gtk.Widget
 import org.javagi.base.FunctionPointer
 import org.javagi.gio.ListIndexModel
 import org.javagi.gobject.SignalConnection
-import org.gnome.gtk.ListView as GTKListView
+import org.gnome.gtk.ListView as GtkListView
 
 private val logger = KotlinLogging.logger {}
 
@@ -46,10 +46,10 @@ private fun <T : GObject> BaseControlledListView(
     val compositionContext = rememberCompositionContext()
     var pendingChange by remember { mutableIntStateOf(0) }
 
-    ComposeNode<BaseListComposeNode<GTKListView, GTKListView.ActivateCallback>, GtkApplier>(
+    ComposeNode<BaseListComposeNode<GtkListView, GtkListView.ActivateCallback>, GtkApplier>(
         factory = {
             BaseListComposeNode(
-                gObject = GTKListView.builder().setFactory(createListItemFactory(compositionContext, child)).build(),
+                gObject = GtkListView.builder().setFactory(createListItemFactory(compositionContext, child)).build(),
             )
         },
         update = {
