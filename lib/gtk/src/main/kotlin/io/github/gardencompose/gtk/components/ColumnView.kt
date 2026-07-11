@@ -1,18 +1,18 @@
 package io.github.gardencompose.gtk.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ComposeNode
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import io.github.gardencompose.GtkApplier
 import io.github.gardencompose.modifier.Modifier
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.gnome.gobject.GObject
-import org.gnome.gtk.Adjustment
 import org.gnome.gtk.ColumnViewColumn
 import org.gnome.gtk.ListTabBehavior
-import org.gnome.gtk.ScrollablePolicy
 import org.gnome.gtk.SelectionModel
 import org.gnome.gtk.ColumnView as GtkColumnView
 
@@ -22,6 +22,7 @@ private val logger = KotlinLogging.logger {}
  * TODO:
  *  - Row factory
  *  - Header factory
+ *  - Sorter
  */
 @Composable
 private fun <T : GObject> BaseControlledColumnView(
@@ -37,16 +38,12 @@ private fun <T : GObject> BaseControlledColumnView(
     tabBehavior: ListTabBehavior = ListTabBehavior.ALL,
     onActivate: (position: Int) -> Unit = {},
     onSelectionChange: (positions: Set<Int>) -> Unit = {},
-    horizontalAdjustment: Adjustment? = null,
-    horizontalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
-    verticalAdjustment: Adjustment? = null,
-    verticalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
 ) {
     var pendingChange by remember { mutableIntStateOf(0) }
 
-    Scrollable(
-        creator = { BaseListComposeNode<GtkColumnView, GtkColumnView.ActivateCallback>(GtkColumnView()) },
-        updater = {
+    ComposeNode<BaseListComposeNode<GtkColumnView, GtkColumnView.ActivateCallback>, GtkApplier>(
+        factory = { BaseListComposeNode(GtkColumnView()) },
+        update = {
             set(columns to columns.size) { (columns, _) ->
                 // Remove old columns
                 while (this.widget.columns.nItems > 0) {
@@ -104,10 +101,6 @@ private fun <T : GObject> BaseControlledColumnView(
                 }
             }
         },
-        horizontalAdjustment = horizontalAdjustment,
-        horizontalScrollPolicy = horizontalScrollPolicy,
-        verticalAdjustment = verticalAdjustment,
-        verticalScrollPolicy = verticalScrollPolicy,
     )
 }
 
@@ -123,10 +116,6 @@ fun <T : GObject> ColumnView(
     singleClickActivate: Boolean = false,
     tabBehavior: ListTabBehavior = ListTabBehavior.ALL,
     onActivate: (position: Int) -> Unit = {},
-    horizontalAdjustment: Adjustment? = null,
-    horizontalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
-    verticalAdjustment: Adjustment? = null,
-    verticalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
 ) {
     BaseControlledColumnView(
         columns = columns,
@@ -139,10 +128,6 @@ fun <T : GObject> ColumnView(
         singleClickActivate = singleClickActivate,
         tabBehavior = tabBehavior,
         onActivate = onActivate,
-        horizontalAdjustment = horizontalAdjustment,
-        horizontalScrollPolicy = horizontalScrollPolicy,
-        verticalAdjustment = verticalAdjustment,
-        verticalScrollPolicy = verticalScrollPolicy,
     )
 }
 
@@ -160,10 +145,6 @@ fun <T : GObject> ControlledColumnView(
     tabBehavior: ListTabBehavior = ListTabBehavior.ALL,
     onActivate: (position: Int) -> Unit = {},
     onSelectionChange: (positions: Set<Int>) -> Unit = {},
-    horizontalAdjustment: Adjustment? = null,
-    horizontalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
-    verticalAdjustment: Adjustment? = null,
-    verticalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
 ) {
     val model = rememberMultiSelectionModel(items)
 
@@ -180,10 +161,6 @@ fun <T : GObject> ControlledColumnView(
         tabBehavior = tabBehavior,
         onActivate = onActivate,
         onSelectionChange = onSelectionChange,
-        horizontalAdjustment = horizontalAdjustment,
-        horizontalScrollPolicy = horizontalScrollPolicy,
-        verticalAdjustment = verticalAdjustment,
-        verticalScrollPolicy = verticalScrollPolicy,
     )
 }
 
@@ -201,10 +178,6 @@ fun <T : GObject> ControlledColumnView(
     tabBehavior: ListTabBehavior = ListTabBehavior.ALL,
     onActivate: (position: Int) -> Unit = {},
     onSelectionChange: (position: Int?) -> Unit = {},
-    horizontalAdjustment: Adjustment? = null,
-    horizontalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
-    verticalAdjustment: Adjustment? = null,
-    verticalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
 ) {
     val model = rememberSingleSelectionModel(items)
 
@@ -235,10 +208,6 @@ fun <T : GObject> ControlledColumnView(
                 onSelectionChange(null)
             }
         },
-        horizontalAdjustment = horizontalAdjustment,
-        horizontalScrollPolicy = horizontalScrollPolicy,
-        verticalAdjustment = verticalAdjustment,
-        verticalScrollPolicy = verticalScrollPolicy,
     )
 }
 
@@ -254,10 +223,6 @@ fun <T : GObject> ControlledColumnView(
     singleClickActivate: Boolean = false,
     tabBehavior: ListTabBehavior = ListTabBehavior.ALL,
     onActivate: (position: Int) -> Unit = {},
-    horizontalAdjustment: Adjustment? = null,
-    horizontalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
-    verticalAdjustment: Adjustment? = null,
-    verticalScrollPolicy: ScrollablePolicy = ScrollablePolicy.MINIMUM,
 ) {
     val model = rememberNoSelectionModel(items)
 
@@ -272,9 +237,5 @@ fun <T : GObject> ControlledColumnView(
         singleClickActivate = singleClickActivate,
         tabBehavior = tabBehavior,
         onActivate = onActivate,
-        horizontalAdjustment = horizontalAdjustment,
-        horizontalScrollPolicy = horizontalScrollPolicy,
-        verticalAdjustment = verticalAdjustment,
-        verticalScrollPolicy = verticalScrollPolicy,
     )
 }

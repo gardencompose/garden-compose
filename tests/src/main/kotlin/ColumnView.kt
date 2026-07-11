@@ -28,7 +28,12 @@ import org.gnome.gtk.ColumnViewColumn
 
 fun main(args: Array<String>) {
     adwApplication("my.example.hello-app", args) {
-        ApplicationWindow(title = "Column View", onClose = ::exitApplication, defaultWidth = 900, defaultHeight = 400) {
+        ApplicationWindow(
+            title = "Column View",
+            onClose = ::exitApplication,
+            defaultWidth = 1200,
+            defaultHeight = 600,
+        ) {
             VerticalBox {
                 HeaderBar(modifier = Modifier.cssClasses("flat"))
 
@@ -77,25 +82,18 @@ fun main(args: Array<String>) {
                 }
 
                 Box {
-                    Panel(
-                        title = "Uncontrolled"
-                    ) {
-                        VerticalBox(spacing = 8) {
+                    VerticalBox(spacing = 8) {
+                        Panel(title = "Uncontrolled") {
                             val model = rememberSingleSelectionModel(items)
-                            ScrolledWindow(
-                                hasFrame = true,
-                                modifier = Modifier.expand(true),
-                                propagateNaturalWidth = true,
-                                propagateNaturalHeight = true,
-                            ) {
-                                ColumnView(
-                                    columns = columns,
-                                    model = model,
-                                    showRowSeparators = true,
-                                    showColumnSeparators = true,
-                                    onActivate = { println("Activated row: $it") },
-                                )
-                            }
+                            ColumnView(
+                                columns = columns,
+                                model = model,
+                                showRowSeparators = true,
+                                showColumnSeparators = true,
+                                onActivate = { println("Activated row: $it") },
+                            )
+                        }
+                        VerticalBox(modifier = Modifier.margin(8), spacing = 8) {
                             Button(
                                 label = "Add Column",
                                 onClick = {
@@ -139,22 +137,15 @@ fun main(args: Array<String>) {
                             }
                         }
                         val selectedItems = remember { mutableStateSetOf<Int>() }
-                        ScrolledWindow(
-                            hasFrame = true,
-                            modifier = Modifier.expand(true),
-                            propagateNaturalWidth = true,
-                            propagateNaturalHeight = true,
-                        ) {
-                            ControlledColumnView(
-                                columns = controlledColumns,
-                                items = items,
-                                selectedItems = selectedItems,
-                                onSelectionChange = {
-                                    selectedItems.clear()
-                                    selectedItems.addAll(it)
-                                },
-                            )
-                        }
+                        ControlledColumnView(
+                            columns = controlledColumns,
+                            items = items,
+                            selectedItems = selectedItems,
+                            onSelectionChange = {
+                                selectedItems.clear()
+                                selectedItems.addAll(it)
+                            },
+                        )
                     }
 
                     Panel(
@@ -170,19 +161,12 @@ fun main(args: Array<String>) {
                             }
                         }
                         var selectedItem by remember { mutableStateOf<Int?>(null) }
-                        ScrolledWindow(
-                            hasFrame = true,
-                            modifier = Modifier.expand(true),
-                            propagateNaturalWidth = true,
-                            propagateNaturalHeight = true,
-                        ) {
-                            ControlledColumnView(
-                                columns = controlledColumns,
-                                items = items,
-                                selectedItem = selectedItem,
-                                onSelectionChange = { selectedItem = it }
-                            )
-                        }
+                        ControlledColumnView(
+                            columns = controlledColumns,
+                            items = items,
+                            selectedItem = selectedItem,
+                            onSelectionChange = { selectedItem = it }
+                        )
                     }
 
                     Panel(
@@ -197,17 +181,10 @@ fun main(args: Array<String>) {
                                     .build()
                             }
                         }
-                        ScrolledWindow(
-                            hasFrame = true,
-                            modifier = Modifier.expand(true),
-                            propagateNaturalWidth = true,
-                            propagateNaturalHeight = true,
-                        ) {
-                            ControlledColumnView(
-                                columns = controlledColumns,
-                                items = items,
-                            )
-                        }
+                        ControlledColumnView(
+                            columns = controlledColumns,
+                            items = items,
+                        )
                     }
                 }
             }
@@ -219,7 +196,12 @@ fun main(args: Array<String>) {
 private fun Panel(title: String, child: @Composable () -> Unit) {
     VerticalBox(modifier = Modifier.expand(true)) {
         HeaderBar(title = { Label(text = title) }, showEndTitleButtons = false)
-        Box(modifier = Modifier.margin(8).expand(true)) {
+        ScrolledWindow(
+            hasFrame = true,
+            modifier = Modifier.expand(true),
+            propagateNaturalWidth = true,
+            propagateNaturalHeight = true,
+        ) {
             child()
         }
     }
