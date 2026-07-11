@@ -22,7 +22,6 @@ private val logger = KotlinLogging.logger {}
  * TODO:
  *  - Row factory
  *  - Header factory
- *  - Sorter
  */
 @Composable
 private fun <T : GObject> BaseControlledColumnView(
@@ -48,7 +47,7 @@ private fun <T : GObject> BaseControlledColumnView(
                 // Remove old columns
                 while (this.widget.columns.nItems > 0) {
                     this.widget.removeColumn(
-                        this.widget.columns.getItem(0) as ColumnViewColumn
+                        this.widget.columns.getItem(0) as ColumnViewColumn,
                     )
                 }
 

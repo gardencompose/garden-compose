@@ -47,23 +47,29 @@ fun main(args: Array<String>) {
                             .setTitle("Title")
                             .setExpand(true)
                             .setVisible(firstColumnVisible)
-                            .setFactory(createListItemFactory<ColumnItem>(compositionContext) { item ->
-                                Label(item.title)
-                            })
+                            .setFactory(
+                                createListItemFactory<ColumnItem>(compositionContext) { item ->
+                                    Label(item.title)
+                                },
+                            )
                             .build(),
                         ColumnViewColumn.builder()
                             .setTitle("Author")
                             .setExpand(true)
-                            .setFactory(createListItemFactory<ColumnItem>(compositionContext) { item ->
-                                Label(item.author)
-                            })
+                            .setFactory(
+                                createListItemFactory<ColumnItem>(compositionContext) { item ->
+                                    Label(item.author)
+                                },
+                            )
                             .build(),
                         ColumnViewColumn.builder()
                             .setTitle("Year")
                             .setExpand(true)
-                            .setFactory(createListItemFactory<ColumnItem>(compositionContext) { item ->
-                                Label(item.year.toString())
-                            })
+                            .setFactory(
+                                createListItemFactory<ColumnItem>(compositionContext) { item ->
+                                    Label(item.year.toString())
+                                },
+                            )
                             .build(),
                     )
                 }
@@ -101,7 +107,7 @@ fun main(args: Array<String>) {
                                         ColumnViewColumn(
                                             columns[columns.size % 3].title,
                                             columns[columns.size % 3].factory,
-                                        )
+                                        ),
                                     )
                                 },
                             )
@@ -127,15 +133,9 @@ fun main(args: Array<String>) {
                     Panel(
                         title = "Controlled Multi Selection",
                     ) {
-                        val controlledColumns = remember {
-                            columns.map {
-                                ColumnViewColumn.builder()
-                                    .setTitle(it.title)
-                                    .setExpand(true)
-                                    .setFactory(it.factory)
-                                    .build()
-                            }
-                        }
+                        // Copies the original columns.
+                        // Columns can't be assigned to more than one column view.
+                        val controlledColumns = remember { copyColumns(columns) }
                         val selectedItems = remember { mutableStateSetOf<Int>() }
                         ControlledColumnView(
                             columns = controlledColumns,
@@ -151,36 +151,20 @@ fun main(args: Array<String>) {
                     Panel(
                         title = "Controlled Single Selection",
                     ) {
-                        val controlledColumns = remember {
-                            columns.map {
-                                ColumnViewColumn.builder()
-                                    .setTitle(it.title)
-                                    .setExpand(true)
-                                    .setFactory(it.factory)
-                                    .build()
-                            }
-                        }
+                        val controlledColumns = remember { copyColumns(columns) }
                         var selectedItem by remember { mutableStateOf<Int?>(null) }
                         ControlledColumnView(
                             columns = controlledColumns,
                             items = items,
                             selectedItem = selectedItem,
-                            onSelectionChange = { selectedItem = it }
+                            onSelectionChange = { selectedItem = it },
                         )
                     }
 
                     Panel(
                         title = "Controlled No Selection",
                     ) {
-                        val controlledColumns = remember {
-                            columns.map {
-                                ColumnViewColumn.builder()
-                                    .setTitle(it.title)
-                                    .setExpand(true)
-                                    .setFactory(it.factory)
-                                    .build()
-                            }
-                        }
+                        val controlledColumns = remember { copyColumns(columns) }
                         ControlledColumnView(
                             columns = controlledColumns,
                             items = items,
@@ -204,6 +188,16 @@ private fun Panel(title: String, child: @Composable () -> Unit) {
         ) {
             child()
         }
+    }
+}
+
+private fun copyColumns(columns: List<ColumnViewColumn>): List<ColumnViewColumn> {
+    return columns.map {
+        ColumnViewColumn.builder()
+            .setTitle(it.title)
+            .setExpand(true)
+            .setFactory(it.factory)
+            .build()
     }
 }
 
