@@ -6,6 +6,7 @@ import io.github.gardencompose.GtkApplier
 import io.github.gardencompose.GtkComposeWidget
 import io.github.gardencompose.SingleChildComposeNode
 import io.github.gardencompose.modifier.Modifier
+import org.gnome.gtk.Adjustment
 import org.gnome.gtk.CornerType
 import org.gnome.gtk.PolicyType
 import org.gnome.gtk.ScrolledWindow
@@ -32,7 +33,10 @@ import org.gnome.gtk.ScrolledWindow
 @Composable
 fun ScrolledWindow(
     modifier: Modifier = Modifier,
+    hasFrame: Boolean = false,
+    horizontalAdjustment: Adjustment? = null,
     horizontalScrollbarPolicy: PolicyType = PolicyType.AUTOMATIC,
+    verticalAdjustment: Adjustment? = null,
     verticalScrollbarPolicy: PolicyType = PolicyType.AUTOMATIC,
     kineticScrolling: Boolean = true,
     minContentHeight: Int? = null,
@@ -54,6 +58,9 @@ fun ScrolledWindow(
         },
         update = {
             set(modifier) { applyModifier(it) }
+            set(hasFrame) { this.widget.hasFrame = it }
+            set(horizontalAdjustment) { this.widget.hadjustment = it }
+            set(verticalAdjustment) { this.widget.vadjustment = it }
             set(horizontalScrollbarPolicy to verticalScrollbarPolicy) { (h, v) -> this.widget.setPolicy(h, v) }
             set(kineticScrolling) { this.widget.kineticScrolling = it }
             set(minContentHeight) { this.widget.minContentHeight = it ?: -1 }
