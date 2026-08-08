@@ -5,9 +5,44 @@ import androidx.compose.runtime.ComposeNode
 import io.github.gardencompose.GtkApplier
 import io.github.gardencompose.GtkComposeWidget
 import io.github.gardencompose.SingleChildComposeNode
+import io.github.gardencompose.gtk.components.orientable
 import io.github.gardencompose.modifier.Modifier
 import org.gnome.gtk.Orientation
 import org.gnome.adw.Clamp as GtkClamp
+
+/**
+ * Creates a [org.gnome.adw.Clamp] that constrains its child to a given size.
+ *
+ * @param modifier Compose [Modifier] for layout and styling.
+ * @param orientation The axis in which clamping is applied.
+ * @param maximumSize The maximum size allocated to the child.
+ * @param tighteningThreshold The size above which the child is clamped.
+ * @param content The composable content to display inside the clamp.
+ */
+@Composable
+fun Clamp(
+    modifier: Modifier = Modifier,
+    orientation: Orientation = Orientation.HORIZONTAL,
+    maximumSize: Int = 600,
+    tighteningThreshold: Int = 400,
+    content: @Composable () -> Unit,
+) {
+    ComposeNode<GtkComposeWidget<GtkClamp>, GtkApplier>(
+        factory = {
+            SingleChildComposeNode(
+                GtkClamp.builder().build(),
+                set = { child = it },
+            )
+        },
+        update = {
+            set(modifier) { applyModifier(it) }
+            orientable(orientation)
+            set(maximumSize) { this.widget.maximumSize = it }
+            set(tighteningThreshold) { this.widget.tighteningThreshold = it }
+        },
+        content = content,
+    )
+}
 
 /**
  * A vertically oriented [Clamp].
@@ -43,38 +78,4 @@ fun HorizontalClamp(
     content: @Composable () -> Unit,
 ) {
     Clamp(modifier, Orientation.HORIZONTAL, maximumSize, tighteningThreshold, content)
-}
-
-/**
- * Creates a [org.gnome.adw.Clamp] that constrains its child to a given size.
- *
- * @param modifier Compose [Modifier] for layout and styling.
- * @param orientation The axis in which clamping is applied.
- * @param maximumSize The maximum size allocated to the child.
- * @param tighteningThreshold The size above which the child is clamped.
- * @param content The composable content to display inside the clamp.
- */
-@Composable
-fun Clamp(
-    modifier: Modifier = Modifier,
-    orientation: Orientation = Orientation.HORIZONTAL,
-    maximumSize: Int = 600,
-    tighteningThreshold: Int = 400,
-    content: @Composable () -> Unit,
-) {
-    ComposeNode<GtkComposeWidget<GtkClamp>, GtkApplier>(
-        factory = {
-            SingleChildComposeNode(
-                GtkClamp.builder().build(),
-                set = { child = it },
-            )
-        },
-        update = {
-            set(modifier) { applyModifier(it) }
-            set(orientation) { this.widget.orientation = it }
-            set(maximumSize) { this.widget.maximumSize = it }
-            set(tighteningThreshold) { this.widget.tighteningThreshold = it }
-        },
-        content = content,
-    )
 }

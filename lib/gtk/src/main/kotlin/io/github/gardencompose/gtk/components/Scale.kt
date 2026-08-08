@@ -75,7 +75,7 @@ fun Scale(
         },
         update = {
             set(modifier) { applyModifier(it) }
-            set(orientation) { this.widget.orientation = it }
+            orientable(orientation)
             set(lower) { this.widget.adjustment.lower = it }
             set(upper) { this.widget.adjustment.upper = it }
             set(digits) { this.widget.digits = it }

@@ -33,6 +33,37 @@ private class GtkBoxComposeNode(gObject: GtkBox) : GtkContainerComposeNode<GtkBo
 }
 
 /**
+ * Creates a [org.gnome.gtk.Box] that arranges child widgets into a single row or column.
+ *
+ * @param modifier Compose [Modifier] for layout and styling.
+ * @param orientation The axis on which the children are aligned.
+ * @param spacing The space between the child widgets.
+ * @param homogeneous Whether all children are given equal space in the box.
+ * @param content The composable content to display.
+ */
+@Composable
+fun Box(
+    modifier: Modifier = Modifier,
+    orientation: Orientation = Orientation.HORIZONTAL,
+    spacing: Int = 0,
+    homogeneous: Boolean = false,
+    content: @Composable () -> Unit,
+) {
+    ComposeNode<GtkComposeWidget<GtkBox>, GtkApplier>(
+        factory = {
+            GtkBoxComposeNode(GtkBox.builder().build())
+        },
+        update = {
+            set(modifier) { applyModifier(it) }
+            orientable(orientation)
+            set(spacing) { this.widget.spacing = it }
+            set(homogeneous) { this.widget.homogeneous = it }
+        },
+        content = content,
+    )
+}
+
+/**
  * A vertically aligned [Box]
  *
  * @param modifier Compose [Modifier] for layout and styling.
@@ -66,35 +97,4 @@ fun HorizontalBox(
     content: @Composable () -> Unit,
 ) {
     Box(modifier, Orientation.HORIZONTAL, spacing, homogeneous, content)
-}
-
-/**
- * Creates a [org.gnome.gtk.Box] that arranges child widgets into a single row or column.
- *
- * @param modifier Compose [Modifier] for layout and styling.
- * @param orientation The axis on which the children are aligned.
- * @param spacing The space between the child widgets.
- * @param homogeneous Whether all children are given equal space in the box.
- * @param content The composable content to display.
- */
-@Composable
-fun Box(
-    modifier: Modifier = Modifier,
-    orientation: Orientation = Orientation.HORIZONTAL,
-    spacing: Int = 0,
-    homogeneous: Boolean = false,
-    content: @Composable () -> Unit,
-) {
-    ComposeNode<GtkComposeWidget<GtkBox>, GtkApplier>(
-        factory = {
-            GtkBoxComposeNode(GtkBox.builder().build())
-        },
-        update = {
-            set(modifier) { applyModifier(it) }
-            set(homogeneous) { this.widget.homogeneous = it }
-            set(orientation) { this.widget.orientation = it }
-            set(spacing) { this.widget.spacing = it }
-        },
-        content = content,
-    )
 }

@@ -69,7 +69,7 @@ fun LevelBar(
         },
         update = {
             set(modifier) { applyModifier(it) }
-            set(orientation) { this.widget.orientation = it }
+            orientable(orientation)
             set(inverted) { this.widget.inverted = it }
             set(maxValue) {
                 this.widget.maxValue = it

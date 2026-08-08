@@ -71,7 +71,7 @@ fun FlowBox(
         },
         update = {
             set(modifier) { applyModifier(it) }
-            set(orientation) { this.widget.orientation = it }
+            orientable(orientation)
             set(activateOnSingleClick) { this.widget.activateOnSingleClick = it }
             set(columnSpacing) { this.widget.columnSpacing = it }
             set(rowSpacing) { this.widget.rowSpacing = it }

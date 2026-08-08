@@ -42,7 +42,7 @@ fun CenterBox(
         },
         update = {
             set(modifier) { applyModifier(it) }
-            set(orientation) { this.widget.orientation = it }
+            orientable(orientation)
             set(baselinePosition) { this.widget.baselinePosition = it }
             set(shrinkCenterLast) { this.widget.shrinkCenterLast = it }
         },

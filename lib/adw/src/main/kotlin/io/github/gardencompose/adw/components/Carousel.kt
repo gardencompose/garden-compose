@@ -12,6 +12,7 @@ import io.github.gardencompose.GtkComposeWidget
 import io.github.gardencompose.GtkContainerComposeNode
 import io.github.gardencompose.LeafComposeNode
 import io.github.gardencompose.gtk.components.VerticalBox
+import io.github.gardencompose.gtk.components.orientable
 import io.github.gardencompose.modifier.Modifier
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.gnome.adw.Carousel
@@ -138,7 +139,7 @@ fun Carousel(
         },
         update = {
             set(modifier) { applyModifier(it) }
-            set(state.orientation) { this.widget.orientation = it }
+            orientable(state.orientation)
             set(allowLongSwipes) { this.widget.allowLongSwipes = it }
             set(allowMouseDrag) { this.widget.allowMouseDrag = it }
             set(allowScrollWheel) { this.widget.allowScrollWheel = it }
